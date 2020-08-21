@@ -47,12 +47,6 @@ class App extends React.Component {
   }
 
 
-  resetBoard() {
-    this.setState({
-      items: BoardNumbers
-    })
-  }
-
   // update device width so we can detect if we're in mobile and warn user to rotate its device into landscape mode
   updateDimensions() {
     this.setState({
@@ -63,6 +57,12 @@ class App extends React.Component {
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateDimensions);
+  }
+
+  resetBoard() {
+    this.setState({
+      items: BoardNumbers
+    })
   }
 
   render() {
