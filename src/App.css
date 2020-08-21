@@ -1,38 +1,121 @@
-.App {
-  text-align: center;
+.mainWrapper {
+	width: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container-first {
+	display: flex;
+	flex-flow: column-reverse wrap;
+	align-content: flex-start;
+	width: auto;
+	height: 300px;
+	padding: 0px 0px 0px 20px;
+	background-color: green;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.zero-item {
+	border: 1px solid white;
+	background-color: green;
+	padding-top: 80px;
+	padding-bottom: 84px;
+	text-align: center;
+	width: 50px;
+	font-size: 30px;
+	color: white;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.red-item {
+	border: 1px solid white;
+	background-color: red;
+	text-align: center;
+	color: white;
+	width: 50px;
 }
 
-.App-link {
-  color: #61dafb;
+.black-item {
+	border: 1px solid white;
+	background-color: black;
+	text-align: center;
+	color: white;
+	width: 50px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.value {
+	position: relative;
+	font-size: 25px;
+	padding: 25px 0;
+}
+
+.column-item {
+	border: 1px solid white;
+	background-color: green;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	text-align: center;
+	width: 80px;
+	font-size: 30px;
+	color: white;
+	transform: rotate(-90deg);
+}
+
+.container-second {
+	display: flex;
+	background-color: green;
+	width: auto;
+	height: 70px;
+	flex-flow: row wrap;
+	align-content: flex-start;
+	padding: 0px 0px 0px 72px;
+
+}
+
+.doz-item {
+	flex-basis: 220px;
+	border: 1px solid white;
+	background-color: green;
+	padding-top: 15px;
+	padding-bottom: 30px;
+	text-align: center;
+	height: 20px;
+	font-size: 30px;
+	color: white;
+}
+
+.container-third {
+	display: flex;
+	background-color: green;
+	width: auto;
+	height: 150px;
+	flex-flow: row wrap;
+	align-content: flex-start;
+	padding: 0px 0px 0px 72px;
+}
+
+.outside-section {
+	flex-basis: 107px;
+	border: 1px solid white;
+	background-color: green;
+	padding-top: 15px;
+	padding-bottom: 30px;
+	text-align: center;
+	height: 20px;
+	font-size: 30px;
+	color: white;
+}
+
+.rhomb-red {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background-color: red;
+	border: 1px solid white;
+	transform: rotate(45deg);
+}
+
+.rhomb-black {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background-color: black;
+	border: 1px solid white;
+	transform: rotate(45deg);
 }
