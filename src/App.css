@@ -1,111 +1,116 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
 .mainWrapper {
-	width: 100%;
+	margin: auto;
+	margin-top: 30px;
+	width: max-content;
 }
 
 .container-first {
 	display: flex;
 	flex-flow: column-reverse wrap;
 	align-content: flex-start;
-	width: auto;
-	height: 300px;
-	padding: 0px 0px 0px 20px;
+	width: 810px;
+	height: 280px;
+	padding: 0px 0px 0px 40px;
 	background-color: green;
 }
 
 .zero-item {
 	border: 1px solid white;
 	background-color: green;
-	padding-top: 80px;
-	padding-bottom: 84px;
+	padding-top: 77px;
+	padding-bottom: 75px;
 	text-align: center;
 	width: 50px;
-	font-size: 30px;
 	color: white;
 }
 
 .red-item {
+	width: 50px;
+	color: white;
+	cursor: pointer;
 	border: 1px solid white;
 	background-color: red;
 	text-align: center;
-	color: white;
-	width: 50px;
 }
 
 .black-item {
+	width: 50px;
+	color: white;
+	cursor: pointer;
+	text-align: center;
 	border: 1px solid white;
 	background-color: black;
-	text-align: center;
-	color: white;
-	width: 50px;
 }
 
 .value {
+	cursor: pointer;
 	position: relative;
-	font-size: 25px;
+	font-size: 20px;
 	padding: 25px 0;
 }
 
 .column-item {
+	width: 74px;
+	color: #fff;
+	text-align: center;
 	border: 1px solid white;
 	background-color: green;
-	padding-top: 0px;
-	padding-bottom: 0px;
-	text-align: center;
-	width: 80px;
-	font-size: 30px;
-	color: white;
 	transform: rotate(-90deg);
 }
 
 .container-second {
 	display: flex;
 	background-color: green;
-	width: auto;
-	height: 70px;
+	width: 758px;
+	height: 52px;
 	flex-flow: row wrap;
 	align-content: flex-start;
-	padding: 0px 0px 0px 72px;
-
+	padding: 0px 0px 0px 92px;
 }
 
 .doz-item {
-	flex-basis: 220px;
+	flex-basis: 206px;
 	border: 1px solid white;
 	background-color: green;
 	padding-top: 15px;
 	padding-bottom: 30px;
 	text-align: center;
 	height: 20px;
-	font-size: 30px;
+	font-size: 20px;
 	color: white;
 }
 
 .container-third {
 	display: flex;
 	background-color: green;
-	width: auto;
-	height: 150px;
+	width: 758px;
+	height: 100px;
 	flex-flow: row wrap;
 	align-content: flex-start;
-	padding: 0px 0px 0px 72px;
+	padding: 0px 0px 0px 92px;
 }
 
 .outside-section {
-	flex-basis: 107px;
+	flex-basis: 102px;
 	border: 1px solid white;
 	background-color: green;
 	padding-top: 15px;
-	padding-bottom: 30px;
+	padding-bottom: 15px;
 	text-align: center;
 	height: 20px;
-	font-size: 30px;
+	font-size: 20px;
 	color: white;
 }
 
 .rhomb-red {
 	display: inline-block;
-	width: 30px;
-	height: 30px;
+	width: 20px;
+	height: 20px;
 	background-color: red;
 	border: 1px solid white;
 	transform: rotate(45deg);
@@ -113,9 +118,78 @@
 
 .rhomb-black {
 	display: inline-block;
-	width: 30px;
-	height: 30px;
+	width: 20px;
+	height: 20px;
 	background-color: black;
 	border: 1px solid white;
 	transform: rotate(45deg);
+}
+
+.reset-game {
+	outline: 0;
+	padding: 10px;
+	color: #fff;
+	font-weight: bold;
+	background: green;
+	border: 1px solid #fff;
+	border-left: none;
+}
+
+@media (max-width: 1000px) {
+	body {
+		background: green;
+	}
+	.mainWrapper {
+		margin-top: 0;
+	}
+	.container-first {
+		width: 650px;
+		height: 240px;
+		padding: 0px 0px 0px 10px;
+	}
+	.zero-item {
+		padding-top: 72px;
+		padding-bottom: 70px;
+		text-align: center;
+		width: 30px;
+	}
+	.value {
+		font-size: 19px;
+		padding: 23px 0;
+	}
+	.red-item, .black-item {
+		width: 42px;
+	}
+	.container-second {
+		width: 650px;
+		padding: 0px 0px 0px 41px;
+	}
+	.doz-item {
+		flex-basis: 175px;
+		padding-top: 20px;
+		padding-bottom: 11px;
+		font-size: 16px
+	}
+	.container-third {
+		width: 650px;
+		padding: 0px 0px 0px 41px;
+	}
+	.outside-section {
+		flex-basis: 86.4px;
+		font-size: 16px;
+	}
+	.reset-game {
+		padding: 5px;
+		font-weight: normal;
+		font-size: 11px;
+	}
+	.column-item {
+		width: 69px;
+	}
+}
+
+@media (max-width: 450px) {
+	body {
+		background: #fff
+	}
 }
