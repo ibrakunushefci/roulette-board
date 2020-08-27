@@ -46,16 +46,16 @@ body {
 
 .red-item {
 	width: 50px;
-	color: white;
+	height: 74px;
 	cursor: pointer;
+	text-align: center;
 	border: 1px solid white;
 	background-color: red;
-	text-align: center;
 }
 
 .black-item {
 	width: 50px;
-	color: white;
+	height: 74px;
 	cursor: pointer;
 	text-align: center;
 	border: 1px solid white;
@@ -65,7 +65,7 @@ body {
 .value {
 	font-size: 20px;
 	padding: 25px 0;
-	background: transparent;
+	background: unset;
 	border: 0;
 	outline: 0;
 	color: #fff;
@@ -214,6 +214,14 @@ body {
 	}
 	.container-first .red-item, .container-first .black-item {
 		width: 23px;
+		height: unset;
+		display: flex;
+		-webkit-box-pack: center;
+		    -ms-flex-pack: center;
+		        justify-content: center;
+		-webkit-box-align: center;
+		    -ms-flex-align: center;
+		        align-items: center;
 	}
 	.container-first div:first-child {
 		height: 156px;
