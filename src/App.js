@@ -4,138 +4,130 @@ import { BoardNumbers } from './BoardNumbers';
 import './App.css';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      // Check window width
-      width: window.innerWidth,
+   constructor(props) {
+      super(props);
+      this.state = {
+         items: BoardNumbers, // main board numbers
+         itemsRight: [{ "id": 37, "number": "2 to 1" }, { "id": 38, "number": "2 to 1" }, { "id": 39, "number": "2 to 1" }],
+         bottomNumbers: [{ "id": 40, "text": "1st 12" }, { "id": 41, "text": "2nd 12" }, { "id": 42, "text": "3rd 12" }],
 
-      items: BoardNumbers, // all board items
-      currentItem: {
-        count: ''
-      },
-    }
+         currentItem: {
+           count: ''
+         },
+      }
+   }
 
-    this.updateDimensions = this.updateDimensions.bind(this);
-  }
+   // this function is used to update count and for setting current clicked item
+   updateItem = (item) => {
+      const updatedItem = { ...item, count: item.count ? <>{item.count}<Chip/></> : <Chip/> }
+      this.setState({
+         currentItem: updatedItem
+      });
+      // console.log(updatedItem)
+      
+      return updatedItem;
+   }
 
-  componentDidMount() {
-    window.addEventListener("resize", this.updateDimensions); 
-  }
-
-
-  // this function is used to update count and for setting current clicked item
-  updateItem = (item) => {
-    const updatedItem = { ...item, count: item.count ? <>{item.count}<Chip/></> : <Chip/>}
-    this.setState({
-      currentItem: updatedItem
-    })
-    
-    return updatedItem;
-  }
   
-  appendChild(id) {
-    // filter the required item to update its count
-    const items = this.state.items.map((item) => 
-      item.id === id ? this.updateItem(item) : item
-    )
-    
-    // set state with new items
-    this.setState({
-      items
-    })
-  }
+   // filter the required item to update its count
+   // set state with new items
+   appendChild(id) {
+      if (id >= 37 && id <= 39) {
+         const itemsRight = this.state.itemsRight.map((item) => 
+            item.id === id ? this.updateItem(item) : item
+         );
 
+         this.setState({
+            itemsRight
+         });
+      }
 
-  // update device width so we can detect if we're in mobile and warn user to rotate its device into landscape mode
-  updateDimensions() {
-    this.setState({
-      height: window.innerHeight, 
-      width: window.innerWidth
-    });
-  }
+      else if (id >= 40 && id <= 42) {
+         const bottomNumbers = this.state.bottomNumbers.map((item) => 
+            item.id === id ? this.updateItem(item) : item
+         );
 
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateDimensions);
-  }
+         this.setState({
+            bottomNumbers
+         });
+      }
 
-  resetBoard() {
-    this.setState({
-      items: BoardNumbers
-    })
-  }
+      else {
+         const items = this.state.items.map((item) => 
+            item.id === id ? this.updateItem(item) : item
+         );
+         
+         this.setState({
+            items
+         });
+      }
+   }
 
-  render() {
-    const boardItems = this.state.items.map((item) => 
-      <div key={item.id} className={(item.color === "black") ? 'black-item' : 'red-item'}>
-        <div onClick={this.appendChild.bind(this, item.id)} className="value">
-          {item.id}
-          {item.count}
-        </div>
-      </div>
-    );
+   render() {
+      const mainBoardNumbers = this.state.items.map((item) =>
+         <div key={item.id} className={(item.color === "black") ? 'black-item' : 'red-item'}>
+            <button onClick={this.appendChild.bind(this, item.id)} className={item.count ? 'value hideValue' : 'value'}>
+               {item.id}
+               {item.count}
+            </button>
+         </div>
+      );
 
-    return (
-      <>
-        {this.state.width < 600 
-          ? <p style={{textAlign: "center"}}>Please put you device in landscape mode in order to play this game</p>
-          : (<div className="mainWrapper">
-              <div className="container-first">
-              <div className="zero-item">
-                <div className="value">0</div>
-              </div>
+      const boardRightNumbers = this.state.itemsRight.map((item) =>
+         <div key={item.id} className="column-item">
+            <button onClick={this.appendChild.bind(this, item.id)} className={item.count ? 'value hideValue' : 'value'}>
+               {item.number}
+               {item.count}
+            </button>
+         </div>
+      );
 
-              {boardItems}
+      const boardUpperBottom = this.state.bottomNumbers.map((item) =>
+         <div key={item.id} className="doz-item">
+            <button onClick={this.appendChild.bind(this, item.id)} className={item.count ? 'hideValue' : ''}>
+               {item.text}
+               {item.count}
+            </button>
+         </div>
+      );
 
-              <div className="column-item">
-                <div className="value">2-1</div>
-              </div>
-              <div className="column-item">
-                <div className="value">2-1</div>
-              </div>
-              <div className="column-item">
-                <div className="value">2-1</div>
-              </div>
+      return (
+         <>
+         <div className="mainWrapper">
+            <div className="container-first">
+               {mainBoardNumbers}
+
+               {boardRightNumbers}
             </div>
 
             <div className="container-second">
-              <div className="doz-item">
-                <div>1st 12</div>
-              </div>
-              <div className="doz-item">
-                <div>2nd 12</div>
-              </div>
-              <div className="doz-item">
-                <div>3rd 12</div>
-              </div>
+               {boardUpperBottom}
             </div>
-            
+         
             <div className="container-third">
-              <div className="outside-section">
-                <div>1-18</div>
-              </div>
-              <div className="outside-section">
-                <div>EVEN</div>
-              </div>
-              <div className="outside-section">
-                <div><div className="rhomb-red"></div></div>
-              </div>
-              <div className="outside-section">
-                <div><div className="rhomb-black"></div></div>
-              </div>
-              <div className="outside-section">
-                <div>ODD</div>
-              </div>
-              <div className="outside-section">
-                <div>19-36</div>
-              </div>
-              <button className="reset-game" onClick={() => this.resetBoard()}>Reset Board</button>
+               <div className="outside-section">
+                  <button>1-18</button>
+               </div>
+               <div className="outside-section">
+                  <button>EVEN</button>
+               </div>
+               <div className="outside-section">
+                  <div className="rhomb-red"></div>
+               </div>
+               <div className="outside-section">
+                  <div className="rhomb-black"></div>
+               </div>
+               <div className="outside-section">
+                  <button>ODD</button>
+               </div>
+               <div className="outside-section">
+                  <button>19-36</button>
+               </div>
             </div>
-          </div>)
-        }
-      </>
-    );
-  }
+         </div>
+         </>
+      );
+   }
 }
 
 export default App;
