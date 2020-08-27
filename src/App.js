@@ -10,10 +10,11 @@ class App extends React.Component {
          items: BoardNumbers, // main board numbers
          itemsRight: [{ "id": 37, "number": "2 to 1" }, { "id": 38, "number": "2 to 1" }, { "id": 39, "number": "2 to 1" }],
          bottomNumbers: [{ "id": 40, "text": "1st 12" }, { "id": 41, "text": "2nd 12" }, { "id": 42, "text": "3rd 12" }],
+         lastRowNumbers: [{ "id": 43, "text": "1-18" }, { "id": 44, "text": "EVEN" }, { "id": 45, "text": "" }, { "id": 46, "text": "" }, { "id": 47, "text": "ODD" }, { "id": 48, "text": "19-36" }],
 
          currentItem: {
            count: ''
-         },
+         }
       }
    }
 
@@ -23,12 +24,10 @@ class App extends React.Component {
       this.setState({
          currentItem: updatedItem
       });
-      // console.log(updatedItem)
-      
+
       return updatedItem;
    }
 
-  
    // filter the required item to update its count
    // set state with new items
    appendChild(id) {
@@ -49,6 +48,16 @@ class App extends React.Component {
 
          this.setState({
             bottomNumbers
+         });
+      }
+
+      else if (id >= 43 && id <= 48) {
+         const lastRowNumbers = this.state.lastRowNumbers.map((item) => 
+            item.id === id ? this.updateItem(item) : item
+         );
+
+         this.setState({
+            lastRowNumbers
          });
       }
 
@@ -91,8 +100,16 @@ class App extends React.Component {
          </div>
       );
 
+      const boardLastRow = this.state.lastRowNumbers.map((item) =>
+         <div key={item.id} className="outside-section">
+            <button onClick={this.appendChild.bind(this, item.id)} className={item.count ? 'hideValue' : ''}>
+               {item.text}
+               {item.count}
+            </button>
+         </div>
+      );
+
       return (
-         <>
          <div className="mainWrapper">
             <div className="container-first">
                {mainBoardNumbers}
@@ -105,27 +122,9 @@ class App extends React.Component {
             </div>
          
             <div className="container-third">
-               <div className="outside-section">
-                  <button>1-18</button>
-               </div>
-               <div className="outside-section">
-                  <button>EVEN</button>
-               </div>
-               <div className="outside-section">
-                  <div className="rhomb-red"></div>
-               </div>
-               <div className="outside-section">
-                  <div className="rhomb-black"></div>
-               </div>
-               <div className="outside-section">
-                  <button>ODD</button>
-               </div>
-               <div className="outside-section">
-                  <button>19-36</button>
-               </div>
+               {boardLastRow}
             </div>
          </div>
-         </>
       );
    }
 }
